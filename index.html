@@ -258,7 +258,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="#" onclick="trackNav('Corps')">Corps</a>
     <a href="#" onclick="trackNav('Coffrets')">Coffrets</a>
   </nav>
-  <button class="cart-btn" id="cart-btn">Panier (0)</button>
+  <button class="cart-btn" id="cart-btn" onclick="goToCart()">Panier (0)</button>
 </header>
 
 <section class="hero">
@@ -411,6 +411,10 @@ dataLayer.push({
   page_title: document.title,
   page_path: window.location.pathname
 });
+
+function goToCart() {
+  window.location.href = 'cart.html';
+}
 
 // ── Init ──────────────────────────────────────────────
 renderProducts();
