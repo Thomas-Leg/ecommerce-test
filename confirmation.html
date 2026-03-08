@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LUMIÈRE — Commande confirmée</title>
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MH6ZCL4P');</script>
+  <!-- End Google Tag Manager -->
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --cream: #FAF7F2;
+      --espresso: #2C1810;
+      --terracotta: #C4714A;
+      --sage: #7A8C6E;
+      --gold: #B8955A;
+      --muted: #9A8F87;
+      --card: #FFFFFF;
+      --border: #EDE8E0;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--espresso); font-size: 15px; line-height: 1.6; min-height: 100vh; }
+
+    header {
+      background: var(--cream); border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      padding: 0 5vw; height: 70px;
+    }
+    .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; font-weight: 300; letter-spacing: .18em; color: var(--espresso); text-decoration: none; }
+    .logo span { color: var(--terracotta); }
+
+    /* CONFIRMATION */
+    .confirmation-wrap {
+      max-width: 680px; margin: 0 auto; padding: 5rem 5vw;
+      text-align: center; animation: fadeIn .6s ease both;
+    }
+    @keyframes fadeIn { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:translateY(0); } }
+
+    .check-circle {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: var(--sage); display: flex; align-items: center;
+      justify-content: center; margin: 0 auto 2rem;
+      font-size: 2rem;
+      animation: popIn .5s cubic-bezier(.175,.885,.32,1.275) both;
+    }
+    @keyframes popIn { from { transform: scale(0); opacity:0; } to { transform: scale(1); opacity:1; } }
+
+    .order-number {
+      font-size: .78rem; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--terracotta); margin-bottom: 1rem;
+    }
+    h1 { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300; line-height: 1.15; margin-bottom: 1rem; }
+    h1 em { font-style: italic; color: var(--terracotta); }
+    .subtitle { color: var(--muted); max-width: 420px; margin: 0 auto 3rem; font-size: .95rem; }
+
+    /* ORDER RECAP */
+    .order-recap {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 4px; padding: 1.8rem; text-align: left; margin-bottom: 2rem;
+    }
+    .recap-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; margin-bottom: 1.2rem; }
+    .recap-item { display: flex; justify-content: space-between; align-items: center; padding: .6rem 0; border-bottom: 1px solid var(--border); font-size: .9rem; }
+    .recap-item:last-child { border-bottom: none; }
+    .recap-item-name { display: flex; align-items: center; gap: .6rem; }
+    .recap-emoji { font-size: 1.2rem; }
+    .recap-total { display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; padding-top: 1rem; border-top: 2px solid var(--espresso); font-weight: 500; }
+
+    /* STEPS */
+    .next-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 3rem; }
+    .step { background: var(--card); border: 1px solid var(--border); border-radius: 4px; padding: 1.2rem; text-align: center; }
+    .step-icon { font-size: 1.6rem; margin-bottom: .5rem; }
+    .step-label { font-size: .78rem; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: .3rem; }
+    .step-value { font-size: .88rem; font-weight: 500; }
+
+    .btn-home { display: inline-block; background: var(--espresso); color: #fff; padding: .9rem 2.5rem; text-decoration: none; font-size: .85rem; letter-spacing: .08em; border-radius: 2px; transition: background .2s; }
+    .btn-home:hover { background: var(--terracotta); }
+
+    /* DEBUG PANEL */
+    .debug-panel {
+      margin-top: 3rem; background: #0D1117; color: #00C9A7;
+      border-radius: 4px; padding: 1.2rem; text-align: left;
+      font-family: monospace; font-size: .78rem; line-height: 1.8;
+    }
+    .debug-title { color: #fff; font-size: .82rem; margin-bottom: .8rem; letter-spacing: .06em; }
+
+    @media (max-width: 600px) { .next-steps { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MH6ZCL4P"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<header>
+  <a href="index.html" class="logo">LUM<span>I</span>ÈRE</a>
+</header>
+
+<div class="confirmation-wrap">
+  <div class="check-circle">✓</div>
+  <p class="order-number" id="order-number">Commande #LUM-2024-XXXX</p>
+  <h1>Merci pour votre <em>commande</em> !</h1>
+  <p class="subtitle">Vous recevrez un email de confirmation sous peu. Votre commande sera expédiée sous 2 à 3 jours ouvrés.</p>
+
+  <div class="order-recap">
+    <div class="recap-title">Détail de votre commande</div>
+    <div id="recap-items"></div>
+    <div class="recap-total">
+      <span>Total payé</span>
+      <span id="recap-total" style="color: var(--terracotta)">—</span>
+    </div>
+  </div>
+
+  <div class="next-steps">
+    <div class="step">
+      <div class="step-icon">📧</div>
+      <div class="step-label">Confirmation</div>
+      <div class="step-value">Email envoyé</div>
+    </div>
+    <div class="step">
+      <div class="step-icon">📦</div>
+      <div class="step-label">Expédition</div>
+      <div class="step-value">2–3 jours ouvrés</div>
+    </div>
+    <div class="step">
+      <div class="step-icon">🚚</div>
+      <div class="step-label">Livraison</div>
+      <div class="step-value">Colissimo suivi</div>
+    </div>
+  </div>
+
+  <a href="index.html" class="btn-home">Continuer mes achats</a>
+
+  <div class="debug-panel">
+    <div class="debug-title">📊 DataLayer — Événement purchase envoyé à GA4</div>
+    <div id="debug-output">Chargement...</div>
+  </div>
+</div>
+
+<script>
+window.dataLayer = window.dataLayer || [];
+
+// Génère un numéro de commande unique
+function generateOrderId() {
+  return 'LUM-' + new Date().getFullYear() + '-' + Math.floor(Math.random() * 9000 + 1000);
+}
+
+// Récupère les données du panier depuis sessionStorage
+// (en prod ce serait côté serveur après validation paiement)
+const orderId = generateOrderId();
+const rawItems = sessionStorage.getItem('order_items');
+const rawTotal = sessionStorage.getItem('order_total');
+
+const orderItems = rawItems ? JSON.parse(rawItems) : [
+  { id: 'SKU-001', name: 'Sérum Éclat Vitamine C', brand: 'LUMIÈRE', category: 'Soins Visage', price: 48, emoji: '🌿', qty: 1 },
+  { id: 'SKU-002', name: 'Crème Hydratante Rose Musquée', brand: 'LUMIÈRE', category: 'Soins Visage', price: 36, emoji: '🌸', qty: 2 },
+];
+const orderTotal = rawTotal ? parseFloat(rawTotal) : orderItems.reduce((s, p) => s + p.price * p.qty, 0);
+
+// Affiche le numéro de commande
+document.getElementById('order-number').textContent = `Commande #${orderId}`;
+
+// Affiche le récap
+const recapContainer = document.getElementById('recap-items');
+orderItems.forEach(p => {
+  const div = document.createElement('div');
+  div.className = 'recap-item';
+  div.innerHTML = `
+    <div class="recap-item-name">
+      <span class="recap-emoji">${p.emoji}</span>
+      <span>${p.name} ${p.qty > 1 ? `× ${p.qty}` : ''}</span>
+    </div>
+    <span>${(p.price * p.qty).toFixed(2)}€</span>`;
+  recapContainer.appendChild(div);
+});
+document.getElementById('recap-total').textContent = orderTotal.toFixed(2) + '€';
+
+// ✅ GA4 purchase event — le plus important du funnel !
+const purchasePayload = {
+  event: 'purchase',
+  ecommerce: {
+    transaction_id: orderId,
+    currency: 'EUR',
+    value: orderTotal,
+    tax: parseFloat((orderTotal * 0.20).toFixed(2)),
+    shipping: orderTotal >= 50 ? 0 : 4.90,
+    coupon: '',
+    items: orderItems.map((p, i) => ({
+      item_id: p.id,
+      item_name: p.name,
+      item_brand: p.brand,
+      item_category: p.category,
+      price: p.price,
+      quantity: p.qty,
+      index: i
+    }))
+  }
+};
+
+dataLayer.push({ ecommerce: null });
+dataLayer.push(purchasePayload);
+console.log('📊 DataLayer push: purchase', purchasePayload);
+
+// Affiche dans le debug panel
+document.getElementById('debug-output').innerHTML =
+  JSON.stringify(purchasePayload.ecommerce, null, 2)
+    .replace(/("transaction_id")/g, '<span style="color:#FFD700">$1</span>')
+    .replace(/("value"|"tax"|"shipping")/g, '<span style="color:#FF9500">$1</span>')
+    .replace(/("items")/g, '<span style="color:#00C9A7">$1</span>');
+
+// Nettoyage session
+sessionStorage.removeItem('order_items');
+sessionStorage.removeItem('order_total');
+</script>
+
+</body>
+</html>
