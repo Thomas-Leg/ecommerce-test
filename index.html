@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LUMIÈRE — Cosmétiques Naturels</title>
+
+  <!-- ══ REMPLACE PAR TON ID GTM ══ -->
+  <!-- GTM HEAD SNIPPET — colle ici le script GTM fourni par Google -->
+  <!-- <script>(function(w,d,s,l,i){...})(window,document,'script','dataLayer','GTM-XXXXXXX');</script> -->
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --cream: #FAF7F2;
+      --espresso: #2C1810;
+      --terracotta: #C4714A;
+      --sage: #7A8C6E;
+      --gold: #B8955A;
+      --muted: #9A8F87;
+      --card: #FFFFFF;
+      --border: #EDE8E0;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--espresso);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--cream);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw;
+      height: 70px;
+    }
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem; font-weight: 300;
+      letter-spacing: .18em; color: var(--espresso);
+      text-decoration: none;
+    }
+    .logo span { color: var(--terracotta); }
+    nav a {
+      font-size: .82rem; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none; margin-left: 2rem;
+      transition: color .2s;
+    }
+    nav a:hover { color: var(--espresso); }
+    .cart-btn {
+      background: var(--espresso); color: #fff;
+      border: none; padding: .55rem 1.3rem;
+      font-family: 'DM Sans', sans-serif; font-size: .82rem;
+      letter-spacing: .06em; cursor: pointer;
+      border-radius: 2px; transition: background .2s;
+    }
+    .cart-btn:hover { background: var(--terracotta); }
+
+    /* ── HERO ── */
+    .hero {
+      display: grid; grid-template-columns: 1fr 1fr;
+      min-height: 92vh;
+      animation: fadeIn .8s ease both;
+    }
+    @keyframes fadeIn { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+    .hero-text {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 6vw 5vw 6vw 7vw;
+    }
+    .hero-eyebrow {
+      font-size: .78rem; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--terracotta); margin-bottom: 1.2rem;
+    }
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      font-weight: 300; line-height: 1.12;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 em { font-style: italic; color: var(--terracotta); }
+    .hero p {
+      color: var(--muted); max-width: 400px;
+      font-size: .95rem; margin-bottom: 2.5rem;
+    }
+    .cta-group { display: flex; gap: 1rem; align-items: center; }
+    .btn-primary {
+      background: var(--espresso); color: #fff;
+      padding: .85rem 2.2rem; border: none; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; font-size: .85rem;
+      letter-spacing: .08em; border-radius: 2px;
+      transition: background .2s, transform .15s;
+    }
+    .btn-primary:hover { background: var(--terracotta); transform: translateY(-1px); }
+    .btn-ghost {
+      background: transparent; color: var(--espresso);
+      padding: .85rem 2.2rem; border: 1.5px solid var(--espresso); cursor: pointer;
+      font-family: 'DM Sans', sans-serif; font-size: .85rem;
+      letter-spacing: .08em; border-radius: 2px;
+      transition: all .2s;
+    }
+    .btn-ghost:hover { background: var(--espresso); color: #fff; }
+    .hero-image {
+      background: linear-gradient(135deg, #E8DDD4 0%, #D4C4B8 50%, #C8B4A0 100%);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; position: relative;
+    }
+    .hero-image::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 30%, rgba(196,113,74,.15) 0%, transparent 60%);
+    }
+    .hero-placeholder {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 7rem; opacity: .12; user-select: none;
+      color: var(--espresso);
+    }
+
+    /* ── PRODUCTS ── */
+    .products-section {
+      padding: 6rem 7vw;
+    }
+    .section-header {
+      display: flex; align-items: baseline; justify-content: space-between;
+      margin-bottom: 3rem;
+    }
+    .section-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem; font-weight: 300;
+    }
+    .section-header a {
+      font-size: .82rem; color: var(--terracotta);
+      text-decoration: none; letter-spacing: .06em;
+    }
+    .products-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 2rem;
+    }
+    .product-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 4px; overflow: hidden;
+      transition: box-shadow .25s, transform .25s;
+      cursor: pointer;
+    }
+    .product-card:hover {
+      box-shadow: 0 12px 40px rgba(44,24,16,.1);
+      transform: translateY(-4px);
+    }
+    .product-img {
+      aspect-ratio: 3/4;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3.5rem;
+      position: relative; overflow: hidden;
+    }
+    .product-img::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 60%, rgba(44,24,16,.06));
+    }
+    .product-info { padding: 1.2rem; }
+    .product-brand {
+      font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: .3rem;
+    }
+    .product-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem; font-weight: 400; margin-bottom: .5rem;
+    }
+    .product-price {
+      font-size: .92rem; color: var(--terracotta); font-weight: 500;
+    }
+    .product-price .original {
+      color: var(--muted); text-decoration: line-through;
+      font-weight: 300; margin-right: .4rem; font-size: .85rem;
+    }
+    .add-to-cart {
+      width: 100%; margin-top: 1rem;
+      background: var(--espresso); color: #fff;
+      border: none; padding: .7rem;
+      font-family: 'DM Sans', sans-serif; font-size: .82rem;
+      letter-spacing: .06em; cursor: pointer; border-radius: 2px;
+      transition: background .2s;
+    }
+    .add-to-cart:hover { background: var(--terracotta); }
+
+    /* ── CART NOTIFICATION ── */
+    .cart-notif {
+      position: fixed; bottom: 2rem; right: 2rem;
+      background: var(--espresso); color: #fff;
+      padding: 1rem 1.5rem; border-radius: 4px;
+      font-size: .88rem; display: none;
+      animation: slideUp .3s ease;
+      z-index: 200; box-shadow: 0 8px 30px rgba(0,0,0,.2);
+    }
+    @keyframes slideUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+
+    /* ── BANNER ── */
+    .banner {
+      background: var(--espresso); color: #fff;
+      text-align: center; padding: .6rem;
+      font-size: .78rem; letter-spacing: .1em; text-transform: uppercase;
+    }
+    .banner span { color: var(--gold); margin: 0 .5rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--espresso); color: rgba(255,255,255,.5);
+      padding: 3rem 7vw; text-align: center;
+      font-size: .82rem; margin-top: 4rem;
+    }
+    footer .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; color: #fff; letter-spacing: .2em;
+      font-weight: 300; margin-bottom: 1rem; display: block;
+    }
+
+    /* ── TRACKING NOTE ── */
+    .dev-note {
+      background: #FFF3CD; border: 1px solid #FBBF24;
+      padding: .8rem 1.2rem; font-size: .78rem;
+      color: #92400E; text-align: center;
+    }
+    .dev-note strong { color: #B45309; }
+
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-image { min-height: 40vw; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     GTM BODY SNIPPET — colle juste après <body>
+     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+     ══════════════════════════════════════════ -->
+
+<div class="dev-note">
+  🛠 <strong>Environnement de test CS01</strong> — GTM non encore connecté.
+  Remplace <code>GTM-XXXXXXX</code> dans le code source par ton ID de conteneur.
+</div>
+
+<div class="banner">
+  Livraison offerte dès 50€ <span>✦</span> Nouveau : Sérum Éclat Printanier <span>✦</span> -15% avec LUMIERE15
+</div>
+
+<header>
+  <a href="#" class="logo">LUM<span>I</span>ÈRE</a>
+  <nav>
+    <a href="#" onclick="trackNav('Soins')">Soins</a>
+    <a href="#" onclick="trackNav('Maquillage')">Maquillage</a>
+    <a href="#" onclick="trackNav('Corps')">Corps</a>
+    <a href="#" onclick="trackNav('Coffrets')">Coffrets</a>
+  </nav>
+  <button class="cart-btn" id="cart-btn">Panier (0)</button>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow">Nouvelle Collection Printemps</p>
+    <h1>La beauté <em>naturelle</em>,<br/>révélée.</h1>
+    <p>Des formules clean, des actifs sourcés en France. Votre rituel beauté réinventé, sans compromis.</p>
+    <div class="cta-group">
+      <button class="btn-primary" onclick="trackCTA('Découvrir la collection')">Découvrir la collection</button>
+      <button class="btn-ghost" onclick="trackCTA('Nos engagements')">Nos engagements</button>
+    </div>
+  </div>
+  <div class="hero-image">
+    <div class="hero-placeholder">✿</div>
+  </div>
+</section>
+
+<section class="products-section" id="products">
+  <div class="section-header">
+    <h2>Nos Bestsellers</h2>
+    <a href="#">Voir tout →</a>
+  </div>
+  <div class="products-grid" id="products-grid"></div>
+</section>
+
+<div class="cart-notif" id="cart-notif">✓ Produit ajouté au panier</div>
+
+<footer>
+  <span class="footer-logo">LUMIÈRE</span>
+  © 2024 Lumière Cosmétiques — Site de démonstration pour projet tracking CS01
+</footer>
+
+<script>
+// ═══════════════════════════════════════════════════
+// DATALAYER INIT — toujours avant le snippet GTM
+// ═══════════════════════════════════════════════════
+window.dataLayer = window.dataLayer || [];
+
+// ── Catalogue produits ──────────────────────────────
+const products = [
+  { id: 'SKU-001', name: 'Sérum Éclat Vitamine C', brand: 'LUMIÈRE', category: 'Soins Visage', price: 48, original: null, emoji: '🌿', currency: 'EUR' },
+  { id: 'SKU-002', name: 'Crème Hydratante Rose Musquée', brand: 'LUMIÈRE', category: 'Soins Visage', price: 36, original: 45, emoji: '🌸', currency: 'EUR' },
+  { id: 'SKU-003', name: 'Huile Sèche Corps Argan', brand: 'LUMIÈRE', category: 'Corps', price: 29, original: null, emoji: '✨', currency: 'EUR' },
+  { id: 'SKU-004', name: 'Masque Argile Détox', brand: 'LUMIÈRE', category: 'Soins Visage', price: 22, original: null, emoji: '🌱', currency: 'EUR' },
+  { id: 'SKU-005', name: 'Contour des Yeux Peptides', brand: 'LUMIÈRE', category: 'Soins Visage', price: 54, original: 68, emoji: '💫', currency: 'EUR' },
+  { id: 'SKU-006', name: 'Baume Lèvres Calendula', brand: 'LUMIÈRE', category: 'Lèvres', price: 14, original: null, emoji: '🍯', currency: 'EUR' },
+  { id: 'SKU-007', name: 'Eau Micellaire Aloe Vera', brand: 'LUMIÈRE', category: 'Démaquillage', price: 19, original: null, emoji: '💧', currency: 'EUR' },
+  { id: 'SKU-008', name: 'SPF 50 Teint Naturel', brand: 'LUMIÈRE', category: 'Solaires', price: 32, original: null, emoji: '☀️', currency: 'EUR' },
+];
+
+let cartCount = 0;
+
+// ── Render products ──────────────────────────────────
+function renderProducts() {
+  const grid = document.getElementById('products-grid');
+  products.forEach((p, index) => {
+    const card = document.createElement('div');
+    card.className = 'product-card';
+    card.innerHTML = `
+      <div class="product-img" style="background:${getBg(index)}">${p.emoji}</div>
+      <div class="product-info">
+        <div class="product-brand">${p.brand}</div>
+        <div class="product-name">${p.name}</div>
+        <div class="product-price">
+          ${p.original ? `<span class="original">${p.original}€</span>` : ''}
+          ${p.price}€
+        </div>
+        <button class="add-to-cart" onclick="addToCart('${p.id}')">Ajouter au panier</button>
+      </div>`;
+    card.addEventListener('click', (e) => {
+      if (!e.target.classList.contains('add-to-cart')) viewProduct(p.id);
+    });
+    grid.appendChild(card);
+  });
+
+  // GA4 : view_item_list
+  dataLayer.push({
+    event: 'view_item_list',
+    ecommerce: {
+      item_list_name: 'Bestsellers',
+      items: products.map((p, i) => ({
+        item_id: p.id, item_name: p.name,
+        item_brand: p.brand, item_category: p.category,
+        price: p.price, currency: p.currency, index: i
+      }))
+    }
+  });
+  console.log('📊 DataLayer push: view_item_list', products.length, 'produits');
+}
+
+function getBg(i) {
+  const bgs = ['#F5EDE8','#EDE8F5','#E8F5ED','#F5F0E8','#E8EDF5','#F5E8ED','#E8F5F5','#F5F5E8'];
+  return bgs[i % bgs.length];
+}
+
+// ── Events GA4 e-commerce ────────────────────────────
+function viewProduct(id) {
+  const p = products.find(x => x.id === id);
+  if (!p) return;
+  dataLayer.push({ ecommerce: null }); // clear
+  dataLayer.push({
+    event: 'view_item',
+    ecommerce: {
+      currency: p.currency,
+      value: p.price,
+      items: [{ item_id: p.id, item_name: p.name, item_brand: p.brand, item_category: p.category, price: p.price }]
+    }
+  });
+  console.log('📊 DataLayer push: view_item →', p.name);
+}
+
+function addToCart(id) {
+  const p = products.find(x => x.id === id);
+  if (!p) return;
+
+  cartCount++;
+  document.getElementById('cart-btn').textContent = `Panier (${cartCount})`;
+
+  // ✅ GA4 add_to_cart event
+  dataLayer.push({ ecommerce: null });
+  dataLayer.push({
+    event: 'add_to_cart',
+    ecommerce: {
+      currency: p.currency,
+      value: p.price,
+      items: [{ item_id: p.id, item_name: p.name, item_brand: p.brand, item_category: p.category, price: p.price, quantity: 1 }]
+    }
+  });
+  console.log('📊 DataLayer push: add_to_cart →', p.name, p.price + '€');
+
+  const notif = document.getElementById('cart-notif');
+  notif.style.display = 'block';
+  setTimeout(() => notif.style.display = 'none', 2500);
+}
+
+function trackCTA(label) {
+  dataLayer.push({ event: 'cta_click', cta_label: label, page_location: window.location.href });
+  console.log('📊 DataLayer push: cta_click →', label);
+}
+
+function trackNav(section) {
+  dataLayer.push({ event: 'nav_click', nav_section: section });
+  console.log('📊 DataLayer push: nav_click →', section);
+}
+
+// ── Page view ────────────────────────────────────────
+dataLayer.push({
+  event: 'page_view_custom',
+  page_type: 'home',
+  page_title: document.title,
+  page_path: window.location.pathname
+});
+
+// ── Init ──────────────────────────────────────────────
+renderProducts();
+</script>
+
+</body>
+</html>
